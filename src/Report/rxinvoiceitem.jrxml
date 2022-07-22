@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rxinvoiceitem" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="6fb9bc17-6e8d-4e82-949c-932c1b459693">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="rxid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select itemname,terms,unitprice,qty,total from rxitem where rx_idrx = $P{rxid}]]>
+	</queryString>
+	<field name="itemname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="terms" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unitprice" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qty" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="275" height="20" uuid="b2575cc2-d07b-4ea9-87f3-b90e8ac16648"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="85" height="20" uuid="253962d3-0d90-4177-89fa-f7ccd78f6995"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="0" width="70" height="20" uuid="418fe17a-6a2a-4f1f-9a2e-6ef8bade9377"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="505" y="0" width="90" height="20" uuid="d59cba40-dbfc-41fe-9a0f-81f0bf2423ea"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="0" width="75" height="20" uuid="65d30487-9bc2-4331-af85-64d51a5b8e24"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Term]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="275" height="20" uuid="5cc14414-68ff-4e45-ab11-6e6913025fbf"/>
+				<textElement>
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rxitem_itemname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="85" height="20" uuid="6a9ec1c7-f2bc-4d85-8c81-a526aad7ab72"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rxitem_unitprice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="1" width="70" height="20" uuid="882ef223-0f63-44c0-9c38-c1f01f9dc2b4"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rxitem_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="505" y="0" width="90" height="20" uuid="f4695143-efb8-433a-89ed-fa89c7d9c5e5"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rxitem_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="275" y="0" width="75" height="20" uuid="478a080e-4d73-48ed-8d86-412dee154372"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rxitem_terms}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

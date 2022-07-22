@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="otherproductinvoicelist" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1a0e01ba-d04d-477a-b2b8-85e2d756246c">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="refno" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     invoiceitem.`qty` AS invoiceitem_qty,
+     invoiceitem.`sellprice` AS invoiceitem_sellprice,
+     invoiceitem.`total` AS invoiceitem_total,
+     item.`itemname` AS item_itemname,
+     itemsubcatogery.`terms` AS itemsubcatogery_terms
+FROM
+     `stock` stock INNER JOIN `invoiceitem` invoiceitem ON stock.`idstock` = invoiceitem.`idstock`
+     INNER JOIN `item` item ON stock.`iditem` = item.`iditem`
+     INNER JOIN `itemsubcatogery` itemsubcatogery ON item.`iditemsubcatogery` = itemsubcatogery.`iditemsubcatogery`
+     INNER JOIN `otherproduct` otherproduct ON invoiceitem.`idinvoice` = otherproduct.`idotherproduct`
+WHERE
+     idinvoice = $P{refno}]]>
+	</queryString>
+	<field name="invoiceitem_qty" class="java.lang.Double"/>
+	<field name="invoiceitem_sellprice" class="java.lang.Double"/>
+	<field name="invoiceitem_total" class="java.lang.Double"/>
+	<field name="item_itemname" class="java.lang.String"/>
+	<field name="itemsubcatogery_terms" class="java.lang.String"/>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="456" y="1" width="99" height="20" uuid="8b68e79b-1425-4053-8912-73d04f4aa398"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="229" height="20" uuid="90c44523-be6c-41b7-bf3c-225e66afb51c"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="1" width="69" height="20" uuid="ea224dae-4c9d-4a3e-a473-fee8f2a20214"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="1" width="111" height="20" uuid="b226f19d-b836-4bee-921b-fe3ce5a47cd4"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="1" width="47" height="20" uuid="44f39edd-c6f4-48a3-a0fc-01774c444a5a"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Terms]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="229" height="20" uuid="3d774f83-db31-4b66-b115-52382182f32e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_itemname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="1" width="69" height="20" uuid="09eb6d43-e1c2-4cea-9af1-9f150312346e"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceitem_sellprice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="1" width="111" height="20" uuid="5fad1594-95ef-4c96-998a-9027da45c6bc"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceitem_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="1" width="99" height="20" uuid="a39dc558-2ebb-47b7-a652-c4f9a880fc27"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceitem_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="229" y="1" width="47" height="20" uuid="aed99402-eead-4251-9fc6-0fe02f826f3b"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemsubcatogery_terms}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

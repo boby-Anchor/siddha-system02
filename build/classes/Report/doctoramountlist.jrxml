@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="doctoramountlist" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="87512b6a-e34b-4c08-b617-bbe57a67d939">
+	<property name="ireport.zoom" value="1.331000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="d1" class="java.lang.String"/>
+	<parameter name="d2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+ da.iddoctor,d.doctorname,d.doctortell,d.doctorbankname,d.doctorbankbranchname,d.doctorbankacountnumber
+ ,sum(da.amount) as S
+ from doctoramount da inner join doctor d on da.iddoctor=d.iddoctor
+ where da.date between $P{d1} and $P{d2}  group by da.iddoctor]]>
+	</queryString>
+	<field name="iddoctor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctorname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctortell" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctorbankname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctorbankbranchname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctorbankacountnumber" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="S" class="java.lang.Double"/>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="58" height="20" uuid="94f3130c-4cec-4a23-a6f8-caa32a111447"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ID Doctor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="0" width="138" height="20" uuid="c9d578e3-8479-43d8-8269-1de99848cb72"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Doctor Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="0" width="78" height="20" uuid="182e691b-8e07-4c6b-9c84-d8a3c6d43b46"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Tell]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="0" width="69" height="20" uuid="c04c9a40-a27f-4d1b-adbb-3fc8476aa479"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Bank]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="0" width="69" height="20" uuid="68d43b40-c40e-4f9b-ba9c-910c3c9ea3f2"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Branch]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="0" width="74" height="20" uuid="a62d62e7-dbad-4633-affb-888eb3b14c10"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Account Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="0" width="69" height="20" uuid="b8035926-593f-491b-8b57-907661fa4281"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Full Aount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="58" height="20" uuid="6df62f22-da37-4f40-89d3-c9d66778cec0"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{iddoctor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="0" width="138" height="20" uuid="e78eb07e-7605-4468-a02a-5639934c2898"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctorname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="0" width="78" height="20" uuid="af6312dc-8df4-4368-9103-87012e7cb308"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctortell}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="0" width="69" height="20" uuid="15f8db8d-85a1-49b2-a8ff-ca6521bc9c05"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctorbankname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="0" width="69" height="20" uuid="eb2f75ac-5ffc-4a51-8c00-41df9ac73b60"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctorbankbranchname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="74" height="20" uuid="2b8d2a49-df75-421c-9583-8460e148fde3"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctorbankacountnumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="485" y="0" width="69" height="20" uuid="aa9f8167-362e-47c3-baf4-2d1581420d37"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{S}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DoctorAmount" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5df2fb3e-c4ee-40b8-9515-823a9bac02fc">
+	<property name="ireport.zoom" value="2.143588810000002"/>
+	<property name="ireport.x" value="16"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="d1_report" class="java.lang.String"/>
+	<parameter name="d2_report" class="java.lang.String"/>
+	<parameter name="nettotal" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["F:\\SADFInal\\01_1_siddha_System\\src\\Report\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+ da.iddoctor,d.doctorname,d.doctortell,d.doctorbankname,d.doctorbankbranchname,d.doctorbankacountnumber
+ ,sum(da.amount) as S
+ from doctoramount da inner join doctor d on da.iddoctor=d.iddoctor
+ where da.date between $P{d1_report} and $P{d2_report} group by da.iddoctor]]>
+	</queryString>
+	<field name="iddoctor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctorname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctortell" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctorbankname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctorbankbranchname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctorbankacountnumber" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="S" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="35" backcolor="#99FF33" uuid="ba72816a-a27b-4362-b477-89a56804c9c1"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor Amount ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="c98b7edd-0e32-4866-b1df-b83b104e1ac6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Form  :-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="0" width="100" height="20" uuid="d2f92081-34c9-469a-a2c1-595709ab084c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[To  :-]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-11" y="19" width="576" height="1" uuid="01d4a8ac-38b1-4e9c-8557-1da3ef1a40f2"/>
+			</line>
+			<textField>
+				<reportElement x="53" y="1" width="100" height="19" uuid="522c297b-0233-48ca-9a98-93e18e506693"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{d1_report}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="100" height="19" uuid="78916368-2b68-4552-90bd-348eeb5794d3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{d2_report}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<staticText>
+				<reportElement x="354" y="0" width="72" height="20" uuid="ced0084c-e585-4e3b-8f74-48ed8600b333"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Branch Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="72" height="20" uuid="73be9b54-f4c3-46b1-b1e1-936b461c1566"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Tell]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="53" height="20" uuid="0cd96b29-fe75-4284-8cc0-dc5f07765cc0"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Doctor ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="0" width="169" height="20" uuid="9ac919c4-bf06-4ff0-bdd2-20978aa0d819"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="0" width="60" height="20" uuid="8e303b3f-d474-470d-87d3-82e1a5bd5cfa"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Bank Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="0" width="65" height="20" uuid="817de23f-bb90-45b3-bbd8-343adc86a712"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Acount Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="491" y="0" width="64" height="20" uuid="c1aca9eb-a7b0-46b5-a37e-a0c25b755445"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="426" y="2" width="65" height="20" uuid="cedcd6a6-91ad-43bf-9202-d13e603dda02"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctorbankacountnumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="354" y="1" width="72" height="20" uuid="7bfa39c2-a28e-4c4e-8223-22e869f30542"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctorbankbranchname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="1" width="60" height="20" uuid="ca64afa8-46dc-41d5-b699-009b681b9277"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctorbankname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="1" width="72" height="20" uuid="e566a934-6f77-4db8-9bf5-577e74dc85f5"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctortell}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="53" height="20" uuid="b3a610aa-62f8-4c04-8595-9bd42d40939f"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{iddoctor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="1" width="169" height="20" uuid="fbc8d4e1-f05f-4b35-96d1-a3700abe783e"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctorname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="491" y="2" width="64" height="20" uuid="87e00d35-6dfe-4c13-bffa-36df65456193"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{S}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="4" width="78" height="20" uuid="cfca3e3e-b70f-4142-9882-a77ae7e3c326"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total  Amount :-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="4" width="128" height="22" forecolor="#FF3333" uuid="fd1f54cd-fd52-492b-b87d-0dc853d3f375"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nettotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
